@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Hero from '@/components/sections/Hero';
+import Hero from '@/components/hero/Hero';
 import About from '@/components/sections/About';
 import Services from '@/components/sections/Services';
 import Portfolio from '@/components/sections/Portfolio';

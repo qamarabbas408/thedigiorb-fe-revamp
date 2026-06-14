@@ -6,6 +6,7 @@ import { SettingsProvider } from "@/context/SettingsContext";
 import ClientLayout from "@/components/ClientLayout";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://thedigiorb.com'),
   title: {
@@ -78,7 +79,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-background text-foreground font-sans antialiased m-0 p-0 box-border">
         <QueryProvider>
         {/* Favicons */}
         <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
@@ -94,7 +95,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:opsz,wght@14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
           rel="stylesheet"
         />
 
@@ -144,9 +145,6 @@ export default function RootLayout({
         >
           <i className="bi bi-arrow-up-short"></i>
         </a>
-
-        {/* Preloader */}
-        <div id="preloader"></div>
 
         {/* Vendor JS Files */}
         <Script

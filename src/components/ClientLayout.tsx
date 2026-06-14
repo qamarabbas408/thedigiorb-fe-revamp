@@ -8,6 +8,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   const pathname = usePathname();
   
   const isAdminRoute = pathname?.startsWith('/admin');
+  const isHomePage = pathname === '/';
   
   return (
     <>
