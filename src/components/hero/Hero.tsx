@@ -192,155 +192,235 @@ export default function HeroSection() {
         </div>
 
         {/* RIGHT column */}
-        <div className="flex flex-col items-end gap-5 relative" style={{ minHeight: "500px" }}>
-          {/* Trusted Partner card */}
+        <div className="flex flex-col gap-[16px] max-w-[500px] ml-auto w-full">
+          {/* First box: Glassmorphic container with two inner cards side by side */}
           <div
-            className="absolute bottom-[100px] left-0 rounded-2xl px-5 py-4 backdrop-blur-xl min-w-[190px]"
+            className="w-full backdrop-blur-xl rounded-2xl p-[16px]"
             style={{
-              background: "var(--color-white-92)",
-              boxShadow: "0 8px 32px var(--color-shadow-light)",
-            }}
-          >
-            <div
-              className="text-4xl font-black leading-none"
-              style={{ color: "var(--color-accent)" }}
-            >
-              400+
-            </div>
-            <div
-              className="text-sm font-semibold mt-1 mb-2.5"
-              style={{ color: "var(--color-card-foreground)" }}
-            >
-              Trusted Partner
-            </div>
-            <div className="flex flex-wrap gap-1">
-              {PARTNER_LOGOS.map((name) => (
-                <span
-                  key={name}
-                  className="text-xs font-bold rounded-md px-1.5 py-0.5"
-                  style={{
-                    color: "var(--color-card-foreground-muted)",
-                    background: "var(--color-card-bg-muted)",
-                  }}
-                >
-                  {name}
-                </span>
-              ))}
-            </div>
-            <button
-              className="mt-3 w-full py-2.5 rounded-full border-2 bg-white font-bold text-sm cursor-pointer transition-colors duration-200"
-              style={{
-                borderColor: "var(--color-card-border)",
-                color: "var(--color-card-foreground-solid)",
-              }}
-              onMouseOver={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background = "var(--color-card-hover)")
-              }
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background = "white")
-              }
-            >
-              Book a Call
-            </button>
-          </div>
-
-          {/* Projects launched card */}
-          <div
-            className="absolute top-[40px] right-0 rounded-2xl px-[18px] py-3.5 backdrop-blur-xl min-w-[130px]"
-            style={{
-              background: "var(--color-overlay)",
-              boxShadow: "0 8px 32px var(--color-shadow-medium)",
-            }}
-          >
-            <div
-              className="w-full h-[60px] rounded-xl flex items-center justify-center text-xl mb-2.5"
-              style={{
-                background: "var(--color-white-15)",
-                border: "1px dashed var(--color-white-30)",
-              }}
-            >
-              🖼
-            </div>
-            <div className="text-[1.8rem] font-black leading-none text-white">
-              800+
-            </div>
-            <div
-              className="text-xs font-medium mt-1"
-              style={{ color: "var(--color-white-80)" }}
-            >
-              Projects successfully
-              <br />
-              launched worldwide
-            </div>
-          </div>
-
-          {/* Contact by Email card */}
-          <div
-            className="w-full max-w-[500px] backdrop-blur-xl rounded-2xl px-7 py-6"
-            style={{
-              background: "var(--color-white-10)",
+              background: "rgba(255,255,255,0.05)",
               border: "1px solid var(--color-white-20)",
               boxShadow: "0 8px 32px var(--color-shadow-soft)",
             }}
           >
-            <h3 className="m-0 mb-1.5 text-xl font-extrabold tracking-[-0.02em]">
-              Contact by Email
-            </h3>
-            <p
-              className="m-0 mb-3.5 text-sm"
-              style={{ color: "var(--color-white-70)" }}
-            >
-              Enter your email and we'll contact you
-            </p>
-
-            {/* Social row */}
-            <div style={{ display: "flex", gap: "10px", marginBottom: "16px" }}>
-              {[<TwitterIcon />, <InstagramIcon />, <LinkedInIcon />].map((Icon, i) => (
-                <button
-                  key={i}
+            <div className="flex gap-[16px]">
+              {/* Inner div 1: Trusted Partner */}
+              <div
+                className="rounded-xl flex-1 flex flex-col"
+                style={{
+                  background: "linear-gradient(135deg, #AF5D48, #E04812)",
+                  padding: "16px",
+                }}
+              >
+                <div
                   style={{
-                    width: "34px",
-                    height: "34px",
-                    borderRadius: "50%",
-                    border: "1.5px solid var(--color-white-40)",
-                    background: "transparent",
+                    fontSize: "44px",
+                    fontWeight: 600,
+                    lineHeight: 1,
                     color: "white",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    fontFamily: "'Inter', sans-serif",
                   }}
                 >
-                  {Icon}
+                  400+
+                </div>
+                <div
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: 600,
+                    color: "white",
+                    fontFamily: "'Inter', sans-serif",
+                    marginTop: "4px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Trusted Partner
+                </div>
+                <div className="flex flex-wrap gap-1 mb-[40px]" style={{ maxWidth: "180px" }}>
+                  {PARTNER_LOGOS.map((name) => (
+                    <span
+                      key={name}
+                      className="rounded-md overflow-hidden"
+                      style={{
+                        background: "rgba(255,255,255,0.1)",
+                        padding: "2px",
+                      }}
+                    >
+                      <img
+                        src={`https://picsum.photos/seed/${name.toLowerCase()}/60/20`}
+                        alt={name}
+                        style={{ display: "block", height: "16px" }}
+                      />
+                    </span>
+                  ))}
+                </div>
+                <button
+                  style={{
+                    padding: "8px 20px",
+                    borderRadius: "100px",
+                    border: "none",
+                    background: "white",
+                    color: "var(--color-accent)",
+                    fontWeight: 700,
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    cursor: "pointer",
+                    transition: "transform 0.15s, box-shadow 0.15s",
+                    alignSelf: "flex-start",
+                  }}
+                  onMouseOver={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
+                    (e.currentTarget as HTMLButtonElement).style.boxShadow =
+                      "0 8px 24px var(--color-shadow-medium)";
+                  }}
+                  onMouseOut={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
+                  }}
+                >
+                  Book a Call
                 </button>
-              ))}
-            </div>
+              </div>
 
-            {/* Email input */}
-            <form
-              onSubmit={handleEmailSubmit}
-              className="flex rounded-full overflow-hidden items-center"
+              {/* Inner div 2: Projects launched */}
+              <div
+                className="rounded-xl flex-1 relative overflow-hidden flex flex-col justify-end"
+                style={{
+                  background: "linear-gradient(135deg, #E04812, #AF5D48)",
+                  padding: "16px",
+                  minHeight: "120px",
+                }}
+              >
+                <img
+                  src="/assets/figma_assets/Mask group.png"
+                  alt=""
+                  style={{
+                    position: "absolute",
+                    right: 0,
+                    top: 0,
+                    height: "100%",
+                    zIndex: 0,
+                    objectFit: "contain",
+                    opacity: 0.6,
+                  }}
+                />
+                <div className="relative z-10">
+                  <div
+                    style={{
+                      fontSize: "44px",
+                      fontWeight: 600,
+                      lineHeight: 1,
+                      color: "white",
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    800+
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 400,
+                      color: "white",
+                      fontFamily: "'Inter', sans-serif",
+                      marginTop: "4px",
+                    }}
+                  >
+                    Projects successfully launched worldwide
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Second box: Glassmorphic container with Contact by Email */}
+          <div
+            className="w-full backdrop-blur-xl rounded-2xl p-[16px]"
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid var(--color-white-20)",
+              boxShadow: "0 8px 32px var(--color-shadow-soft)",
+            }}
+          >
+            <div
+              className="rounded-xl"
               style={{
-                background: "var(--color-white-12)",
-                border: "1px solid var(--color-white-25)",
+                background: "linear-gradient(135deg, #AF5D48, #E04812)",
+                padding: "16px",
               }}
             >
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email"
-                required
-                className="flex-1 bg-transparent border-none outline-none px-5 py-3 text-white text-sm"
-              />
-              <button
-                type="submit"
-                className="w-10 h-10 rounded-full border-none bg-white flex items-center justify-center m-1 shrink-0 cursor-pointer transition-transform duration-150 hover:scale-110"
-                style={{ color: "var(--color-accent)" }}
+              <h3
+                style={{
+                  margin: "0 0 6px",
+                  fontSize: "44px",
+                  fontWeight: 600,
+                  lineHeight: 1,
+                  color: "white",
+                  fontFamily: "'Inter', sans-serif",
+                  letterSpacing: "-0.02em",
+                }}
               >
-                <ArrowRightIcon />
-              </button>
-            </form>
+                Contact by Email
+              </h3>
+              <p
+                style={{
+                  margin: "0 0 14px",
+                  fontSize: "18px",
+                  fontWeight: 400,
+                  color: "white",
+                  fontFamily: "'Inter', sans-serif",
+                }}
+              >
+                Have a project in mind? We'd love to hear about it and bring your vision to life.
+              </p>
+
+              {/* Social row */}
+              <div style={{ display: "flex", gap: "10px", marginBottom: "16px" }}>
+                {[<TwitterIcon />, <InstagramIcon />, <LinkedInIcon />].map((Icon, i) => (
+                  <button
+                    key={i}
+                    style={{
+                      width: "34px",
+                      height: "34px",
+                      borderRadius: "50%",
+                      border: "1.5px solid var(--color-white-40)",
+                      background: "transparent",
+                      color: "white",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {Icon}
+                  </button>
+                ))}
+              </div>
+
+              {/* Email input */}
+              <form
+                onSubmit={handleEmailSubmit}
+                className="flex rounded-full overflow-hidden items-center"
+                style={{
+                  background: "rgba(0,0,0,0.1)",
+                  border: "1px solid var(--color-white-25)",
+                }}
+              >
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email"
+                  required
+                  className="flex-1 bg-transparent border-none outline-none px-5 py-3 text-white text-sm"
+                />
+                <button
+                  type="submit"
+                  className="w-10 h-10 rounded-full border-none bg-white flex items-center justify-center m-1 shrink-0 cursor-pointer transition-transform duration-150 hover:scale-110"
+                  style={{ color: "var(--color-accent)" }}
+                >
+                  <ArrowRightIcon />
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </main>
