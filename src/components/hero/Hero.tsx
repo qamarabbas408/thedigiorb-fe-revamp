@@ -126,12 +126,13 @@ export default function HeroSection() {
           <p
             className="m-0 leading-[1.65] max-w-[420px]"
             style={{
-              fontSize: "clamp(0.9rem, 1.6vw, 1.05rem)",
+              fontSize: "18px",
+              fontWeight: 500,
+              fontFamily: "'Inter', sans-serif",
               color: "var(--color-white-80)",
             }}
           >
-            From idea to launch, we design, develop, and deliver high-performance digital products
-            that help businesses scale faster and smarter.
+            We build innovative digital solutions that help businesses grow. From web development to mobile apps, we bring your vision to life.
           </p>
 
           {/* CTA Buttons */}
@@ -166,25 +167,25 @@ export default function HeroSection() {
               style={{
                 padding: "14px 32px",
                 borderRadius: "100px",
-                border: "2px solid var(--color-white-50)",
-                background: "var(--color-white-12)",
+                border: "none",
+                background: "linear-gradient(135deg, #F97316, #DF420B)",
                 color: "white",
                 fontWeight: 700,
                 fontSize: "0.9rem",
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
                 cursor: "pointer",
-                transition: "background 0.2s",
-                backdropFilter: "blur(6px)",
+                transition: "transform 0.15s, box-shadow 0.15s",
               }}
-              onMouseOver={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background =
-                  "var(--color-white-22)")
-              }
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background =
-                  "var(--color-white-12)")
-              }
+              onMouseOver={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow =
+                  "0 8px 24px rgba(0,0,0,0.3)";
+              }}
+              onMouseOut={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
+              }}
             >
               Learn More
             </button>
@@ -203,7 +204,7 @@ export default function HeroSection() {
             }}
           >
             <div className="flex gap-[16px]">
-              {/* Inner div 1: Trusted Partner */}
+              {/* Inner div 1: Experience */}
               <div
                 className="rounded-xl flex-1 flex flex-col"
                 style={{
@@ -220,7 +221,7 @@ export default function HeroSection() {
                     fontFamily: "'Inter', sans-serif",
                   }}
                 >
-                  400+
+                  10+
                 </div>
                 <div
                   style={{
@@ -232,53 +233,25 @@ export default function HeroSection() {
                     marginBottom: "10px",
                   }}
                 >
-                  Trusted Partner
+                  Years of Experience
                 </div>
-                <div className="flex flex-wrap gap-1 mb-[40px]" style={{ maxWidth: "180px" }}>
-                  {PARTNER_LOGOS.map((name) => (
+                <div className="flex flex-wrap gap-[6px] mb-[40px]" style={{ maxWidth: "180px" }}>
+                  {["React", "Next.js", "Node.js", "TypeScript", "Figma", "Tailwind"].map((tech) => (
                     <span
-                      key={name}
-                      className="rounded-md overflow-hidden"
+                      key={tech}
+                      className="rounded-md px-2 py-0.5 text-xs font-medium"
                       style={{
-                        background: "rgba(255,255,255,0.1)",
-                        padding: "2px",
+                        background: "rgba(255,255,255,0.15)",
+                        color: "white",
+                        fontFamily: "'Inter', sans-serif",
+                        whiteSpace: "nowrap",
                       }}
                     >
-                      <img
-                        src={`https://picsum.photos/seed/${name.toLowerCase()}/60/20`}
-                        alt={name}
-                        style={{ display: "block", height: "16px" }}
-                      />
+                      {tech}
                     </span>
                   ))}
                 </div>
-                <button
-                  style={{
-                    padding: "8px 20px",
-                    borderRadius: "100px",
-                    border: "none",
-                    background: "white",
-                    color: "var(--color-accent)",
-                    fontWeight: 700,
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    cursor: "pointer",
-                    transition: "transform 0.15s, box-shadow 0.15s",
-                    alignSelf: "flex-start",
-                  }}
-                  onMouseOver={(e) => {
-                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                    (e.currentTarget as HTMLButtonElement).style.boxShadow =
-                      "0 8px 24px var(--color-shadow-medium)";
-                  }}
-                  onMouseOut={(e) => {
-                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
-                  }}
-                >
-                  Book a Call
-                </button>
+
               </div>
 
               {/* Inner div 2: Projects launched */}
@@ -388,6 +361,19 @@ export default function HeroSection() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+                      transition: "transform 0.15s, background 0.15s, border-color 0.15s",
+                    }}
+                    onMouseOver={(e) => {
+                      const el = e.currentTarget as HTMLButtonElement;
+                      el.style.transform = "scale(1.1)";
+                      el.style.background = "#F97316";
+                      el.style.borderColor = "#F97316";
+                    }}
+                    onMouseOut={(e) => {
+                      const el = e.currentTarget as HTMLButtonElement;
+                      el.style.transform = "scale(1)";
+                      el.style.background = "transparent";
+                      el.style.borderColor = "var(--color-white-40)";
                     }}
                   >
                     {Icon}
@@ -398,11 +384,7 @@ export default function HeroSection() {
               {/* Email input */}
               <form
                 onSubmit={handleEmailSubmit}
-                className="flex rounded-full overflow-hidden items-center"
-                style={{
-                  background: "rgba(0,0,0,0.1)",
-                  border: "1px solid var(--color-white-25)",
-                }}
+                style={{ position: "relative" }}
               >
                 <input
                   type="email"
@@ -410,12 +392,40 @@ export default function HeroSection() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email"
                   required
-                  className="flex-1 bg-transparent border-none outline-none px-5 py-3 text-white text-sm"
+                  className="w-full bg-transparent text-white text-sm outline-none"
+                  style={{
+                    padding: "14px 56px 14px 20px",
+                    borderRadius: "100px",
+                    border: "1px solid var(--color-white-25)",
+                    background: "rgba(0,0,0,0.1)",
+                    boxSizing: "border-box",
+                  }}
                 />
                 <button
                   type="submit"
-                  className="w-10 h-10 rounded-full border-none bg-white flex items-center justify-center m-1 shrink-0 cursor-pointer transition-transform duration-150 hover:scale-110"
-                  style={{ color: "var(--color-accent)" }}
+                  style={{
+                    position: "absolute",
+                    right: "6px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "50%",
+                    border: "none",
+                    background: "#F97316",
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    transition: "transform 0.15s",
+                  }}
+                  onMouseOver={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%) scale(1.1)";
+                  }}
+                  onMouseOut={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%)";
+                  }}
                 >
                   <ArrowRightIcon />
                 </button>

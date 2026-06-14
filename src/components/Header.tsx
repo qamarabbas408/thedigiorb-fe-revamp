@@ -84,15 +84,20 @@ export default function Header() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                transition: "background 0.2s",
+                transition: "transform 0.15s, background 0.15s, border-color 0.15s",
               }}
-              onMouseOver={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background =
-                  "var(--color-white-15)")
-              }
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background = "transparent")
-              }
+              onMouseOver={(e) => {
+                const el = e.currentTarget as HTMLButtonElement;
+                el.style.transform = "scale(1.1)";
+                el.style.background = "#F97316";
+                el.style.borderColor = "#F97316";
+              }}
+              onMouseOut={(e) => {
+                const el = e.currentTarget as HTMLButtonElement;
+                el.style.transform = "scale(1)";
+                el.style.background = "transparent";
+                el.style.borderColor = "var(--color-white-40)";
+              }}
             >
               {Icon}
             </button>
