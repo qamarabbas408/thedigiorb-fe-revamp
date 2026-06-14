@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const PARTNER_LOGOS = ["SpeedyHR", "Mero", "Jevelo", "Prosnet", "Create."];
 
@@ -140,7 +141,10 @@ export default function HeroSection() {
             />
           </div>
           {/* Big headline */}
-          <h1
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             style={{
               margin: 0,
               fontSize: "clamp(1.8rem, 8vw, 6rem)",
@@ -155,9 +159,12 @@ export default function HeroSection() {
             Develop.
             <br />
             Deploy.
-          </h1>
+          </motion.h1>
 
-          <p
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             className="m-0 leading-[1.65] max-w-[420px]"
             style={{
               fontSize: "18px",
@@ -167,69 +174,84 @@ export default function HeroSection() {
             }}
           >
             We build innovative digital solutions that help businesses grow. From web development to mobile apps, we bring your vision to life.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
           <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-            <button
-              style={{
-                padding: "14px 32px",
-                borderRadius: "100px",
-                border: "none",
-                background: "white",
-                color: "var(--color-accent)",
-                fontWeight: 700,
-                fontSize: "0.9rem",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                cursor: "pointer",
-                transition: "transform 0.15s, box-shadow 0.15s",
-              }}
-              onMouseOver={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow =
-                  "0 8px 24px var(--color-shadow-medium)";
-              }}
-              onMouseOut={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
             >
-              Start Now
-            </button>
-            <button
-              style={{
-                padding: "14px 32px",
-                borderRadius: "100px",
-                border: "none",
-                background: "linear-gradient(135deg, #F97316, #DF420B)",
-                color: "white",
-                fontWeight: 700,
-                fontSize: "0.9rem",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                cursor: "pointer",
-                transition: "transform 0.15s, box-shadow 0.15s",
-              }}
-              onMouseOver={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow =
-                  "0 8px 24px rgba(0,0,0,0.3)";
-              }}
-              onMouseOut={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
-              }}
+              <button
+                style={{
+                  padding: "14px 32px",
+                  borderRadius: "100px",
+                  border: "none",
+                  background: "white",
+                  color: "var(--color-accent)",
+                  fontWeight: 700,
+                  fontSize: "0.9rem",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  cursor: "pointer",
+                  transition: "transform 0.15s, box-shadow 0.15s",
+                }}
+                onMouseOver={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow =
+                    "0 8px 24px var(--color-shadow-medium)";
+                }}
+                onMouseOut={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
+                }}
+              >
+                Start Now
+              </button>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
             >
-              Learn More
-            </button>
+              <button
+                style={{
+                  padding: "14px 32px",
+                  borderRadius: "100px",
+                  border: "none",
+                  background: "linear-gradient(135deg, #F97316, #DF420B)",
+                  color: "white",
+                  fontWeight: 700,
+                  fontSize: "0.9rem",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  cursor: "pointer",
+                  transition: "transform 0.15s, box-shadow 0.15s",
+                }}
+                onMouseOver={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow =
+                    "0 8px 24px rgba(0,0,0,0.3)";
+                }}
+                onMouseOut={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
+                }}
+              >
+                Learn More
+              </button>
+            </motion.div>
           </div>
         </div>
 
         {/* RIGHT column */}
         <div className="flex flex-col gap-[16px] w-full lg:max-w-[500px] lg:ml-auto self-end">
           {/* First box: Glassmorphic container with two inner cards side by side */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             className="w-full backdrop-blur-xl rounded-2xl p-[16px]"
             style={{
               background: "rgba(255,255,255,0.05)",
@@ -336,10 +358,13 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Second box: Glassmorphic container with Contact by Email */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
             className="w-full backdrop-blur-xl rounded-2xl p-[16px]"
             style={{
               background: "rgba(255,255,255,0.05)",
@@ -465,7 +490,7 @@ export default function HeroSection() {
                 </button>
               </form>
             </div>
-          </div>
+          </motion.div>
         </div>
       </main>
 

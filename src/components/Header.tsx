@@ -60,7 +60,7 @@ export default function Header() {
         {/* Logo */}
         <div className="flex items-center gap-2.5">
           <LogoIcon />
-          <span style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 400, fontSize: "1.25rem", letterSpacing: "0.2px", color: "#fff" }}>Thedigiorb</span>
+          <span style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 400, fontSize: "33px", letterSpacing: "0.2px", color: "#fff" }}>Thedigiorb</span>
         </div>
 
         {/* Desktop nav links */}

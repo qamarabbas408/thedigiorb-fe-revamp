@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Hero from '@/components/hero/Hero';
+import Services from '@/sections/Services';
 import About from '@/components/sections/About';
-import Services from '@/components/sections/Services';
 import Portfolio from '@/components/sections/Portfolio';
 import WhyUs from '@/components/sections/WhyUs';
 import Testimonials from '@/components/sections/Testimonials';
@@ -42,8 +42,8 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <About />
       <Services />
+      <About />
       <Portfolio />
       <WhyUs />
       <Testimonials />
