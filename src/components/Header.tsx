@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
   { label: "Home", href: "/#hero" },
@@ -39,14 +39,28 @@ const LogoIcon = () => (
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 sm:px-[100px] py-5">
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 sm:px-[100px] py-3 transition-colors duration-300"
+        style={{
+          background: scrolled ? "linear-gradient(135deg, var(--color-background) 0%, var(--color-background-mid) 40%, var(--color-background-dark) 70%, var(--color-background-darker) 100%)" : "transparent",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
+          borderBottom: scrolled ? "1px solid var(--color-white-20)" : "1px solid transparent",
+        }}
+      >
         {/* Logo */}
         <div className="flex items-center gap-2.5">
           <LogoIcon />
-          <span className="font-bold text-xl tracking-[-0.02em]">Thedigiorb</span>
+          <span style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 400, fontSize: "1.25rem", letterSpacing: "0.2px", color: "#fff" }}>Thedigiorb</span>
         </div>
 
         {/* Desktop nav links */}
@@ -55,7 +69,7 @@ export default function Header() {
             <li key={link.label}>
               <a
                 href={link.href}
-                className="no-underline text-sm font-[450] transition-colors duration-200"
+                className="no-underline text-sm font-[450] nav-link-item"
                 style={{ color: "var(--color-white-85)" }}
                 onMouseOver={(e) => ((e.target as HTMLElement).style.color = "white")}
                 onMouseOut={(e) =>
@@ -142,6 +156,26 @@ export default function Header() {
           ))}
         </div>
       )}
+    <style>{`
+      .nav-link-item {
+        position: relative;
+      }
+      .nav-link-item::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: #F97316;
+        border-radius: 2px;
+        transition: width 0.25s ease, left 0.25s ease;
+      }
+      .nav-link-item:hover::after {
+        width: 100%;
+        left: 0;
+      }
+    `}</style>
     </>
   );
 }

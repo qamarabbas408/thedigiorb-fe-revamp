@@ -60,25 +60,22 @@ export default function HeroSection() {
 
       {/* ── LARGE HERO IMAGE WITH MESH ── */}
       <div
+        className="hidden lg:block hero-desktop-image"
         style={{
           position: "absolute",
           left: "50%",
           bottom: 0,
           transform: "translateX(-50%)",
           zIndex: 5,
+          width: "clamp(500px, 55vw, 850px)",
           height: "clamp(500px, 55vw, 850px)",
           pointerEvents: "none",
         }}
       >
         {/* Circular mesh behind the image (soft fade) */}
         <div
-          className="absolute"
+          className="absolute inset-0"
           style={{
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "clamp(500px, 55vw, 850px)",
-            height: "clamp(500px, 55vw, 850px)",
             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect x='4' y='4' width='72' height='72' rx='6' fill='rgba(255,255,255,0.1)' stroke='none'/%3E%3C/svg%3E")`,
             backgroundSize: "80px 80px",
             maskImage: "radial-gradient(ellipse at center, black 15%, transparent 100%)",
@@ -91,7 +88,8 @@ export default function HeroSection() {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "contain",
+            objectFit: "cover",
+            objectPosition: "center bottom",
             position: "relative",
             zIndex: 1,
           }}
@@ -100,19 +98,55 @@ export default function HeroSection() {
 
       {/* ── HERO CONTENT ── */}
       <main
-        className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-0 items-center min-h-[calc(100vh-88px)]" style={{ padding: "0 100px 60px" }}
+        className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-0 items-start lg:items-center min-h-[calc(100vh-88px)] px-5 sm:px-8 md:px-12 lg:px-16 xl:px-[100px] pb-[60px]"
       >
         {/* LEFT column */}
-        <div className="flex flex-col gap-7 max-w-[520px]">
+        <div className="flex flex-col gap-7 w-full lg:max-w-[520px] relative">
+          {/* Tablet image (left side, hidden on mobile & desktop) */}
+          <div
+            className="hidden md:block lg:hidden"
+            style={{
+              position: "absolute",
+              right: 0,
+              bottom: 0,
+              width: "clamp(300px, 40vw, 450px)",
+              height: "100%",
+              pointerEvents: "none",
+              zIndex: 0,
+              maskImage: "linear-gradient(to top, transparent 0%, black 40%)",
+              WebkitMaskImage: "linear-gradient(to top, transparent 0%, black 40%)",
+            }}
+          >
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect x='4' y='4' width='72' height='72' rx='6' fill='rgba(255,255,255,0.1)' stroke='none'/%3E%3C/svg%3E")`,
+                backgroundSize: "80px 80px",
+                maskImage: "radial-gradient(ellipse at center, black 15%, transparent 100%)",
+                WebkitMaskImage: "radial-gradient(ellipse at center, black 15%, transparent 100%)",
+              }}
+            />
+            <img
+              src="/assets/figma_assets/image-large-hero.png"
+              alt=""
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center bottom",
+                position: "relative",
+                zIndex: 1,
+              }}
+            />
+          </div>
           {/* Big headline */}
           <h1
             style={{
               margin: 0,
-              fontSize: "clamp(3.5rem, 8vw, 7rem)",
-              fontWeight: 900,
-              lineHeight: 0.92,
-              letterSpacing: "-0.03em",
-              textTransform: "none",
+              fontSize: "clamp(1.8rem, 8vw, 6rem)",
+              fontWeight: 400,
+              lineHeight: 1.1,
+              fontFamily: "'Anton', sans-serif",
               color: "white",
             }}
           >
@@ -193,7 +227,7 @@ export default function HeroSection() {
         </div>
 
         {/* RIGHT column */}
-        <div className="flex flex-col gap-[16px] max-w-[500px] ml-auto w-full">
+        <div className="flex flex-col gap-[16px] w-full lg:max-w-[500px] lg:ml-auto self-end">
           {/* First box: Glassmorphic container with two inner cards side by side */}
           <div
             className="w-full backdrop-blur-xl rounded-2xl p-[16px]"
@@ -203,7 +237,7 @@ export default function HeroSection() {
               boxShadow: "0 8px 32px var(--color-shadow-soft)",
             }}
           >
-            <div className="flex gap-[16px]">
+            <div className="flex flex-col sm:flex-row gap-[16px]">
               {/* Inner div 1: Experience */}
               <div
                 className="rounded-xl flex-1 flex flex-col"
@@ -214,7 +248,7 @@ export default function HeroSection() {
               >
                 <div
                   style={{
-                    fontSize: "44px",
+                    fontSize: "clamp(24px, 4vw, 36px)",
                     fontWeight: 600,
                     lineHeight: 1,
                     color: "white",
@@ -225,7 +259,7 @@ export default function HeroSection() {
                 </div>
                 <div
                   style={{
-                    fontSize: "18px",
+                    fontSize: "clamp(12px, 1.8vw, 15px)",
                     fontWeight: 600,
                     color: "white",
                     fontFamily: "'Inter', sans-serif",
@@ -279,7 +313,7 @@ export default function HeroSection() {
                 <div className="relative z-10">
                   <div
                     style={{
-                      fontSize: "44px",
+                      fontSize: "clamp(24px, 4vw, 36px)",
                       fontWeight: 600,
                       lineHeight: 1,
                       color: "white",
@@ -290,7 +324,7 @@ export default function HeroSection() {
                   </div>
                   <div
                     style={{
-                      fontSize: "18px",
+                      fontSize: "clamp(12px, 1.8vw, 15px)",
                       fontWeight: 400,
                       color: "white",
                       fontFamily: "'Inter', sans-serif",
@@ -323,7 +357,7 @@ export default function HeroSection() {
               <h3
                 style={{
                   margin: "0 0 6px",
-                  fontSize: "44px",
+                  fontSize: "clamp(22px, 4vw, 36px)",
                   fontWeight: 600,
                   lineHeight: 1,
                   color: "white",
@@ -336,7 +370,7 @@ export default function HeroSection() {
               <p
                 style={{
                   margin: "0 0 14px",
-                  fontSize: "18px",
+                  fontSize: "clamp(12px, 1.8vw, 15px)",
                   fontWeight: 400,
                   color: "white",
                   fontFamily: "'Inter', sans-serif",
@@ -438,6 +472,13 @@ export default function HeroSection() {
       <style>{`
         input::placeholder {
           color: var(--color-white-50);
+        }
+
+        @media (min-width: 1024px) and (max-width: 1279px) {
+          .hero-desktop-image {
+            width: clamp(400px, 45vw, 600px) !important;
+            height: clamp(400px, 45vw, 600px) !important;
+          }
         }
 
         * {
