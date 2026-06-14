@@ -79,10 +79,10 @@ export default function HeroSection() {
             transform: "translate(-50%, -50%)",
             width: "clamp(500px, 55vw, 850px)",
             height: "clamp(500px, 55vw, 850px)",
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect x='4' y='4' width='72' height='72' rx='6' fill='rgba(0,0,0,0.1)' stroke='none'/%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect x='4' y='4' width='72' height='72' rx='6' fill='rgba(255,255,255,0.1)' stroke='none'/%3E%3C/svg%3E")`,
             backgroundSize: "80px 80px",
-            maskImage: "radial-gradient(ellipse at center, black 30%, transparent 100%)",
-            WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 100%)",
+            maskImage: "radial-gradient(ellipse at center, black 15%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(ellipse at center, black 15%, transparent 100%)",
           }}
         />
         <img
